@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="docs">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Documents/Java Libraries/apfloat-1.8.3/lib/apfloat.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$USER_HOME$/Documents/Java Libraries/apfloat-1.8.3/docs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$USER_HOME$/Documents/Java Libraries/apfloat-1.8.3/source" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="eCalc:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/eCalc_jar</output-path>
+    <root id="archive" name="eCalc.jar">
+      <element id="module-output" name="eCalc" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/apfloat-1.8.3/lib/apfloat.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
