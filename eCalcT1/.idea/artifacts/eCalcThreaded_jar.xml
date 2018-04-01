@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="eCalcThreaded:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/eCalcThreaded_jar</output-path>
+    <root id="archive" name="eCalcThreaded.jar">
+      <element id="module-output" name="eCalcThreaded" />
+    </root>
+  </artifact>
+</component>
