@@ -47,14 +47,14 @@ public class Main {
         int counter = 0;
         //Create and set running threads
         for (int limit : limits){
-            threads[counter] = new eThread(total_old+1, (limit+total_old));
+            threads[counter] = new eThread(total_old, (limit+total_old-1)); // you need to start at zero!!!
             threads[counter].start();
             counter++;
             total_old += limit;
         }
         //Delay the main until the threads are all finished, using join
         try {
-            for (Thread thread:threads) {thread.join();} //using the array of threads, join all of them
+            for (Thread thread:threads) thread.join(); //using the array of threads, join all of them
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -83,7 +83,7 @@ public class Main {
             //2^k*(k!)^2
             add = BigDecimal.valueOf(Math.pow(-1, n)).multiply(factorial(6*n)).multiply(BigDecimal.valueOf(545140134*n+13591409));
             add = add.divide(factorial(3*n).multiply(factorial(n).pow(3)).multiply(BigDecimal.valueOf(640320).pow(3*n)).multiply(chud), context);
-            pi = (pi.add(add)).multiply(BigDecimal.valueOf(12));
+            pi = pi.add(add.multiply(BigDecimal.valueOf(12)));
         }
         // System.out.println(e);
         return(pi);
