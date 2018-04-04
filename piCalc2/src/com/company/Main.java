@@ -16,7 +16,7 @@ public class Main {
     static ArrayList<BigDecimal> totals = new ArrayList<>();
     private static BigDecimal total = new BigDecimal(0,context);
     static Thread[] threads = new Thread[threadCount];
-    static BigDecimal chud = (BigDecimal.valueOf(640320).multiply(BigDecimal.valueOf(640320).sqrt(context)));
+    static BigDecimal chud = (((BigDecimal.valueOf(640320)).pow(3)).sqrt(context));
     /*
     These set up:
     The precision of internal calculations,
@@ -34,7 +34,7 @@ public class Main {
         */
         int[] limits = new int[threadCount]; //Array to store the 'widths' of each thread
         int total_old = 0; //Used for making sure that the threads reach the target
-
+        System.out.print((BigDecimal.ONE.divide(series(0,1625), new MathContext(20002))));
         for (int threadID = 0; threadID < threadCount; threadID++)
         {
             limits[threadID] = ((int) (targetLimit/Math.pow(workBase,(threadID+1)))+5);
@@ -59,13 +59,13 @@ public class Main {
             e.printStackTrace();
         }
         //Output the final time taken
-        System.out.println(((System.currentTimeMillis() - unixTimestampOld) +"ms"));
+        //System.out.println(((System.currentTimeMillis() - unixTimestampOld) +"ms"));
         //Add all the individual threads totals
         for (BigDecimal num : totals) {
             total = total.add(num);
         }
         total = BigDecimal.ONE.divide(total,context);
-        System.out.println(total);
+        //System.out.println(total);
     }
     private static BigDecimal factorial(int number) {
         BigDecimal factorial = BigDecimal.ONE;

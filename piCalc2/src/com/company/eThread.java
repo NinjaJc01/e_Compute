@@ -10,6 +10,6 @@ public class eThread extends Thread {
     }
     public void run() {
         Main.totals.add(Main.series(l,u));
-        System.out.println("Thread finished"+String.valueOf(l)+" "+String.valueOf(u));
+        //System.out.println("Thread finished"+String.valueOf(l)+" "+String.valueOf(u));
     }
 }
