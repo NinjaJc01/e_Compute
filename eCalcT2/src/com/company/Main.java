@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class Main {
     //These are for setting options! Feel free to tweak these.
-    private static int precision = 10001;
+    private static int precision = 1001;
     static int targetLimit = 1625;
-    static int threadCount = 4;
-    static double workBase = 2.1; //This can behave slightly oddly, be careful MUST BE LARGER THAN 1
+    static int threadCount = 32;
+    static double workBase = 1.85; //This can behave slightly oddly, be careful MUST BE LARGER THAN 1.5
+    // optimum seems about 1.85
+
 
     //These are NOT to be touched
     private static MathContext context = new MathContext(precision);
@@ -15,8 +17,8 @@ public class Main {
     private static BigDecimal total = new BigDecimal(0,context);
     static Thread[] threads = new Thread[threadCount];
     /*
-    These set:
-    the precision of internal calculations,
+    These set up:
+    The precision of internal calculations,
     A list of totals (Must be a list because of race conditions and other things)
     An array of threads for use later
     */
@@ -27,6 +29,7 @@ public class Main {
         Because earlier iterations take less time
         We need to distribute most of the work to the 'first' thread
         And less going downwards though the threads
+        THIS WORKS VERY BADLY!
         */
         int[] limits = new int[threadCount]; //Array to store the 'widths' of each thread
         int total_old = 0; //Used for making sure that the threads reach the target
@@ -59,7 +62,8 @@ public class Main {
         for (BigDecimal num : totals) {
             total = total.add(num);
         }
-        //System.out.println(total);
+        total  = total.add(BigDecimal.valueOf(2));
+        System.out.println(total);
     }
     private static BigDecimal factorial(int number) {
         BigDecimal factorial = BigDecimal.ONE;

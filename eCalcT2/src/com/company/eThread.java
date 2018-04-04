@@ -9,7 +9,7 @@ public class eThread extends Thread {
 
     }
     public void run() {
-        //System.out.println("Hello from a thread");
         Main.totals.add(Main.series(l,u));
+        //System.out.println("Thread finished"+String.valueOf(l)+" "+String.valueOf(u));
     }
 }

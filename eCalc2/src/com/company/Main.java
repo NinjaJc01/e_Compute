@@ -2,7 +2,7 @@ package com.company;
 import java.math.*;
 public class Main {
     static int precision = 10001;
-    static int limit = 100;
+    static int limit = 1625;
     static MathContext context = new MathContext(precision);
     public static void main(String[] args) {
 	// write your code here
