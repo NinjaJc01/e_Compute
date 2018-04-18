@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="piCalc:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/piCalc_jar</output-path>
+    <root id="archive" name="piCalc.jar">
+      <element id="module-output" name="piCalc" />
+    </root>
+  </artifact>
+</component>

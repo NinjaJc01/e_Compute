@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Main {
     //These are for setting options! Feel free to tweak these.
     private static int precision = 10001;
-    static int targetLimit = 5625;
-    static int threadCount = 64;
+    static int targetLimit = 6000;
+    static int threadCount = 128;
     static double workBase = 1.85; //This can behave slightly oddly, be careful MUST BE LARGER THAN 1.5
     // optimum seems about 1.85
 
@@ -57,7 +57,7 @@ public class Main {
             e.printStackTrace();
         }
         //Output the final time taken
-        System.out.println(((System.currentTimeMillis() - unixTimestampOld) +"ms"));
+        //System.out.println(((System.currentTimeMillis() - unixTimestampOld) +"ms"));
         //Add all the individual threads totals
         for (BigDecimal num : totals) {
             total = total.add(num);

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Main {
     //These are for setting options! Feel free to tweak these.
-    private static int precision = 10001;
-    static int targetLimit = 625;
-    static int threadCount = 4;
+    private static int precision = 100001;
+    static int targetLimit = 40000;
+    static int threadCount = 32;
     static double workBase = 1.85; //This can behave slightly oddly, be careful MUST BE LARGER THAN 1.5
     // optimum seems about 1.85
 
@@ -34,7 +34,8 @@ public class Main {
         */
         int[] limits = new int[threadCount]; //Array to store the 'widths' of each thread
         int total_old = 0; //Used for making sure that the threads reach the target
-        System.out.print((BigDecimal.ONE.divide(series(0,1625), new MathContext(20002))));
+        //System.out.print((BigDecimal.ONE.divide(series(0,1625), new MathContext(5000))));
+        targetLimit++; //Because David broke the thing using -1 later on
         for (int threadID = 0; threadID < threadCount; threadID++)
         {
             limits[threadID] = ((int) (targetLimit/Math.pow(workBase,(threadID+1)))+5);
@@ -58,14 +59,15 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //Output the final time taken
-        //System.out.println(((System.currentTimeMillis() - unixTimestampOld) +"ms"));
+
         //Add all the individual threads totals
         for (BigDecimal num : totals) {
             total = total.add(num);
         }
         total = BigDecimal.ONE.divide(total,context);
-        //System.out.println(total);
+        //Output the final time taken
+        //System.out.println(((System.currentTimeMillis() - unixTimestampOld) +"ms"));
+        System.out.println(total);
     }
     private static BigDecimal factorial(int number) {
         BigDecimal factorial = BigDecimal.ONE;
@@ -80,8 +82,15 @@ public class Main {
         BigDecimal pi = new BigDecimal(0,context);
         BigDecimal add;
         for (int n = lower; n < upper; n++){
-            //2^k*(k!)^2
-            add = BigDecimal.valueOf(Math.pow(-1, n)).multiply(factorial(6*n)).multiply(BigDecimal.valueOf(545140134*n+13591409));
+            add = BigDecimal
+                    .valueOf(Math.pow(-1, n))
+                    .multiply(factorial(6*n))
+                    .multiply(
+                            BigDecimal
+                                    .valueOf(545140134)
+                                    .multiply(BigDecimal.valueOf(n))
+                                    .add(BigDecimal.valueOf(13591409))
+                    );
             add = add.divide(factorial(3*n).multiply(factorial(n).pow(3)).multiply(BigDecimal.valueOf(640320).pow(3*n)).multiply(chud), context);
             pi = pi.add(add.multiply(BigDecimal.valueOf(12)));
         }
